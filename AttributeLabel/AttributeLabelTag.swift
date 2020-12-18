@@ -23,19 +23,11 @@ extension String {
         let typeFont = UIFont.systemFont(ofSize: 12)
         let titFont = UIFont.systemFont(ofSize: titleFont)
         
-        let typeLabelW = widthWithFont(text: typeTitle, font: UIFont.systemFont(ofSize: 12)) + 10.0
+        let typeLabelW = p_widthWithFont(text: typeTitle, font: UIFont.systemFont(ofSize: 12)) + 10.0
         let attachH: CGFloat = 16.0
         // 这个系数可调节标签的相对位置
-        let attachTop: CGFloat = heightWithFont(font: titFont)/2.0 - attachH + 4
-        
-//        let typeLayer = CATextLayer()
-//        typeLayer.frame = CGRect(x: 0, y: 0, width: typeLabelW, height: attachH)
-//        typeLayer.string = typeTitle
-//        typeLayer.foregroundColor = UIColor.white.cgColor;
-//        typeLayer.backgroundColor = typeColor.cgColor
-//        typeLayer.cornerRadius = 6
-//        typeLayer.fontSize = 12
-    
+        let attachTop: CGFloat = p_heightWithFont(font: titFont)/2.0 - attachH + 4
+
         let typeLabel = UILabel()
         typeLabel.frame = CGRect(x: 0, y: 0, width: typeLabelW, height: attachH)
         typeLabel.text = typeTitle;
@@ -47,7 +39,7 @@ extension String {
         typeLabel.textAlignment = .center
         //转化成imgage
 //        let image = asImage(layer: typeLayer)
-        let image = asImage(view: typeLabel)
+        let image = p_asImage(view: typeLabel)
         // 创建image富文本
         let attach = NSTextAttachment()
         attach.bounds = CGRect(x: 0, y: attachTop, width: typeLabelW, height: attachH)
@@ -59,32 +51,8 @@ extension String {
         return att
     }
     
-    //将当前layer转为UIImage
-    private func asImage(layer: CALayer) -> UIImage {
-        if #available(iOS 10.0, *) {
-            let renderer = UIGraphicsImageRenderer(bounds: layer.bounds)
-            return renderer.image { rendererContext in
-                layer.render(in: rendererContext.cgContext)
-            }
-        } else {
-            guard layer.bounds.size.height > 0 && layer.bounds.size.width > 0 else {return UIImage()}
-            UIGraphicsBeginImageContextWithOptions(CGSize(width: layer.bounds.width, height: layer.bounds.height), false, 0)
-            
-            // 之前解决不了的模糊问题就是出在这个方法上
-            //        layer.render(in: UIGraphicsGetCurrentContext()!)
-
-            layer.draw(in: UIGraphicsGetCurrentContext()!)
-//            view.drawHierarchy(in: view.frame, afterScreenUpdates: true)  // 高清截图
-            let image = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            return image ?? UIImage()
-            
-        }
-    }
-    
     //将当前视图转为UIImage
-    private func asImage(view: UIView) -> UIImage {
+    private func p_asImage(view: UIView) -> UIImage {
         if #available(iOS 10.0, *) {
             let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
             return renderer.image { rendererContext in
@@ -107,7 +75,7 @@ extension String {
     }
     
     /// 文字宽度
-    private func widthWithFont(text: String, font : UIFont) -> CGFloat {
+    private func p_widthWithFont(text: String, font : UIFont) -> CGFloat {
 
         let size = CGSize()
         let rect = text.boundingRect(with: size,options: NSStringDrawingOptions.usesFontLeading,attributes: [NSAttributedString.Key.font: font],context: nil)
@@ -116,7 +84,7 @@ extension String {
     }
 
     /// 文字高度
-    private func heightWithFont(_ text: String = "课", font : UIFont) -> CGFloat {
+    private func p_heightWithFont(_ text: String = "课", font : UIFont) -> CGFloat {
 
         let size = CGSize()
         let rect = text.boundingRect(with: size,options: NSStringDrawingOptions.usesFontLeading,attributes: [NSAttributedString.Key.font: font],context: nil)
