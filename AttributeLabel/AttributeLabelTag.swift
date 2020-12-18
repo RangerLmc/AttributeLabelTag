@@ -1,5 +1,5 @@
 //
-//  String+Extension.swift
+//  AttributeLabelTag.swift
 //  AttributeLabel
 //
 //  Created by xthk_lmc on 2020/12/17.
@@ -28,6 +28,14 @@ extension String {
         // 这个系数可调节标签的相对位置
         let attachTop: CGFloat = heightWithFont(font: titFont)/2.0 - attachH + 4
         
+//        let typeLayer = CATextLayer()
+//        typeLayer.frame = CGRect(x: 0, y: 0, width: typeLabelW, height: attachH)
+//        typeLayer.string = typeTitle
+//        typeLayer.foregroundColor = UIColor.white.cgColor;
+//        typeLayer.backgroundColor = typeColor.cgColor
+//        typeLayer.cornerRadius = 6
+//        typeLayer.fontSize = 12
+    
         let typeLabel = UILabel()
         typeLabel.frame = CGRect(x: 0, y: 0, width: typeLabelW, height: attachH)
         typeLabel.text = typeTitle;
@@ -38,6 +46,7 @@ extension String {
         typeLabel.layer.cornerRadius = 6
         typeLabel.textAlignment = .center
         //转化成imgage
+//        let image = asImage(layer: typeLayer)
         let image = asImage(view: typeLabel)
         // 创建image富文本
         let attach = NSTextAttachment()
@@ -48,6 +57,30 @@ extension String {
         att.insert(imageAttStr, at: 0)
         //注意 ：创建这个Label的时候，frame，font，cornerRadius要设置成所生成的图片的3倍，也就是说要生成一个三倍图，否则生成的图片会虚，同学们可以试一试。
         return att
+    }
+    
+    //将当前layer转为UIImage
+    private func asImage(layer: CALayer) -> UIImage {
+        if #available(iOS 10.0, *) {
+            let renderer = UIGraphicsImageRenderer(bounds: layer.bounds)
+            return renderer.image { rendererContext in
+                layer.render(in: rendererContext.cgContext)
+            }
+        } else {
+            guard layer.bounds.size.height > 0 && layer.bounds.size.width > 0 else {return UIImage()}
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: layer.bounds.width, height: layer.bounds.height), false, 0)
+            
+            // 之前解决不了的模糊问题就是出在这个方法上
+            //        layer.render(in: UIGraphicsGetCurrentContext()!)
+
+            layer.draw(in: UIGraphicsGetCurrentContext()!)
+//            view.drawHierarchy(in: view.frame, afterScreenUpdates: true)  // 高清截图
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return image ?? UIImage()
+            
+        }
     }
     
     //将当前视图转为UIImage

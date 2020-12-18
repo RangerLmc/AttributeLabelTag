@@ -14,7 +14,7 @@
 		987A5CC2258B07CB00C2BF17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987A5CC0258B07CB00C2BF17 /* LaunchScreen.storyboard */; };
 		987A5CCD258B07CB00C2BF17 /* AttributeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987A5CCC258B07CB00C2BF17 /* AttributeLabelTests.swift */; };
 		987A5CD8258B07CB00C2BF17 /* AttributeLabelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987A5CD7258B07CB00C2BF17 /* AttributeLabelUITests.swift */; };
-		987A5CFE258B4D5400C2BF17 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987A5CFD258B4D5400C2BF17 /* String+Extension.swift */; };
+		987A5CFE258B4D5400C2BF17 /* AttributeLabelTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987A5CFD258B4D5400C2BF17 /* AttributeLabelTag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		987A5CD3258B07CB00C2BF17 /* AttributeLabelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AttributeLabelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		987A5CD7258B07CB00C2BF17 /* AttributeLabelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeLabelUITests.swift; sourceTree = "<group>"; };
 		987A5CD9258B07CB00C2BF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		987A5CFD258B4D5400C2BF17 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		987A5CFD258B4D5400C2BF17 /* AttributeLabelTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeLabelTag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			children = (
 				987A5CB5258B07C900C2BF17 /* AppDelegate.swift */,
 				987A5CB9258B07C900C2BF17 /* ViewController.swift */,
-				987A5CFD258B4D5400C2BF17 /* String+Extension.swift */,
+				987A5CFD258B4D5400C2BF17 /* AttributeLabelTag.swift */,
 				987A5CBB258B07C900C2BF17 /* Main.storyboard */,
 				987A5CBE258B07CB00C2BF17 /* Assets.xcassets */,
 				987A5CC0258B07CB00C2BF17 /* LaunchScreen.storyboard */,
@@ -259,7 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				987A5CBA258B07C900C2BF17 /* ViewController.swift in Sources */,
-				987A5CFE258B4D5400C2BF17 /* String+Extension.swift in Sources */,
+				987A5CFE258B4D5400C2BF17 /* AttributeLabelTag.swift in Sources */,
 				987A5CB6258B07C900C2BF17 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
