@@ -17,12 +17,9 @@ extension String {
     /// - Returns: NSMutableAttributedString
     func attributeLabelTag(titleFont: CGFloat,  typeTitle: String, typeColor: UIColor) -> NSMutableAttributedString {
         
-        let title = self
-        let att = NSMutableAttributedString(string: title)
-        
+        let att = NSMutableAttributedString(string: self)
         let typeFont = UIFont.systemFont(ofSize: 12)
         let titFont = UIFont.systemFont(ofSize: titleFont)
-        
         let typeLabelW = p_widthWithFont(text: typeTitle, font: UIFont.systemFont(ofSize: 12)) + 10.0
         let attachH: CGFloat = 16.0
         // 这个系数可调节标签的相对位置
